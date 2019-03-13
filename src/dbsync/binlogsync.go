@@ -4,7 +4,6 @@ import (
 	"github.com/siddontang/go-mysql/replication"
 )
 func Dbsync() {}
-	conf := replica
 	/*cfg := replication.BinlogSyncerConfig {
 	ServerID: 100,
 	Flavor:   "mysql",
