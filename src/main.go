@@ -18,4 +18,22 @@ func main() {
 	config.PrintConfig(mybingoConfig)
 	log.Println(mysqlConfig)
 	dbsync.DbSync(mysqlConfig)
+	
+
+	ctrlC := make(chan os.Signal,1)
+	signal.Notify(ctrlC,os.Interrupt,os.Kill)
+
+	quit := <-ctrlC
+	go func() {
+		for _ = range ctrlC{
+			fmt.Println("系统即将退出",s)
+			//停止mybingo服务，要回收资源
+		}
+	}()
+
+
+
+
+
 }
+
