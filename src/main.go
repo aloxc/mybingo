@@ -1,18 +1,21 @@
 package main
-import(
+
+import (
 	"fmt"
-	
+	"log"
+	"mybingo1/config"
+	"mybingo1/dbsync"
+	_ "os"
 )
 
-type Student struct {
-	Name string
-	age int
-
-}
-func main(){
-	stu := Student{
-		Name:"lisi",
-		age:12,
+func main() {
+	fmt.Println("mybingo项目启动")
+	mysqlConfig, configError := config.LoadConfig()
+	if configError != nil {
+		log.Fatalf("读取mybingo配置错误", mysqlConfig, configError)
 	}
-	fmt.Println("buoda",stu)
+	mybingoConfig := config.ReadParam()
+	config.PrintConfig(mybingoConfig)
+	log.Println(mysqlConfig)
+	dbsync.DbSync(mysqlConfig)
 }
