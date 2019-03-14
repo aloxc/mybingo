@@ -1,0 +1,1 @@
+# 用go实现的类似canal，实现了mysql-binlog协议，
